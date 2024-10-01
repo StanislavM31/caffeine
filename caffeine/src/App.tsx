@@ -1,6 +1,35 @@
 import Header from "./components/Header/Header"
+import coffee from './assets/coffeeBeans.png'
+import bg_coffee from './assets/BackgroundCoffe.png'
+import coffeeMenu1 from './assets/Cappuccino.svg'
+import coffeeMenu2 from './assets/ChaiLatte.svg'
+import coffeeMenu3 from './assets/Macchiato.svg'
+import coffeeMenu4 from './assets/Expresso.svg'
+import coffee_beans from './assets/coffeeBeans.svg'
+import badge from './assets/badge.svg'
+import coffee_cup from './assets/coffeeCup.svg'
+import best_price from './assets/bestPrice.svg'
+import cup from './assets/cup.png'
+import quotes from './assets/quotes.svg'
+import avatar from './assets/photo_2021-05-12_for_coffie.png'
+import left from './assets/arrowLeft.svg'
+import right from './assets/arrowRight.svg'
+
 import styled, { createGlobalStyle } from "styled-components";
 import img from "./assets/coffee_image.png";
+
+const coffies = [
+  { id: 1, title: 'Cappuccino', description: 'Coffee 50% | Milk 50%', price: '$8.50', img: coffeeMenu1 },
+  { id: 2, title: 'Chai Latte', description: 'Coffee 50% | Milk 50%', price: '$8.50', img: coffeeMenu2 },
+  { id: 3, title: 'Macchiato', description: 'Coffee 50% | Milk 50%', price: '$8.50', img: coffeeMenu3 },
+  { id: 4, title: 'Expresso', description: 'Coffee 50% | Milk 50%', price: '$8.50', img: coffeeMenu4 },
+];
+const advantages = [
+  { id: 1, title: 'Supreme Beans', description: 'Beans that provides great taste', icon: coffee_beans },
+  { id: 2, title: 'High Quality', description: 'We provide the highest quality', icon: badge },
+  { id: 3, title: 'Extraordinary', description: 'Coffee like you have never tasted', icon: coffee_cup },
+  { id: 4, title: 'Affordable Price', description: 'Our Coffee prices are easy to afford', icon: best_price },
+];
 
 const Global = createGlobalStyle`
   * {
@@ -284,6 +313,56 @@ const Advantages = styled.div`
     }
   
   `
+const VisitCard = styled.div`
+  background-image: url(${bg_coffee});
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+
+  .wrapper_visit_card {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 5% 93px;
+    max-width: 1366px;
+
+    .info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 22px;
+      max-width: 575px;
+
+      h2 {
+        font-family: Playfair Display;
+        font-size: 54px;
+        font-weight: 700;
+        color: #FFFFFF;
+
+        @media (max-width:900px) {
+          font-size: 40px;
+        }
+      }
+  
+      p {
+        font-family: Playfair Display;
+        font-size: 22px;
+        font-weight: 500;
+        color: #FFFFFF;
+      }
+  
+      .button {
+        background: #F9C06A;
+        padding: 14px 27px;
+        border-radius: 24px;
+        color: #1E1E1E;
+        max-width: 134px;
+      }
+
+    }
+  }
+`
 
 const Feedback = styled.div`
   padding: 82px 153px;
@@ -396,44 +475,70 @@ const App = () => {
         </p>
         <button className="button">Learn More</button>
       </div>
-      <img className="img_coffee" src={} alt="coffee" width={500} height={484} />
+      <img className="img_coffee" src={coffee} alt="coffee" width={500} height={484} />
     </CoffeeDiscovery>
 
     <MenuList>
       <h2>Enjoy a new blend of coffee style</h2>
       <p>Explore all flavours of coffee with us. There is always a new cup worth experiencing.</p>
       <div className="content">
+        {coffies.map((el) =>
+          <div className="menu_card" key={el.id}>
+            <img src={el.img} alt="" />
+            <h3>{el.title}</h3>
+            <p className="description">{el.description}</p>
+            <p className="price">{el.price}</p>
+            <button className="btn_order">Order Now</button>
+          </div>
+        )}
       </div>
     </MenuList>
     <Advantages>
       <h2>Why are we different?</h2>
       <p>We don’t just make your coffee, we make your day!</p>
       <div className="advantages_content">
-
+        {advantages.map((el) =>
+          <div className="advantages_card" key={el.id}>
+            <img src={el.icon} alt="" />
+            <h3>{el.title}</h3>
+            <p>{el.description}</p>
+          </div>
+        )}
       </div>
       <p>Great ideas start with great coffee, Lets help you achieve that</p>
       <p className="important">Get started today.</p>
       <button className="button">Join Us</button>
     </Advantages>
-
+    <VisitCard >
+      <div className="wrapper_visit_card">
+        <div className="info">
+          <h2>Get a chance to have an Amazing morning</h2>
+          <p>We are giving you are one time opportunity to experience a better life with coffee.</p>
+          <button className="button">Order Now</button>
+        </div>
+        <div className="wrapper_img">
+          {/* <img src={beans} alt="" /> */}
+          <img src={cup} alt="" />
+        </div>
+      </div>
+    </VisitCard>
 
     <Feedback>
       <h2>Our coffee perfection feedback</h2>
       <p>Our customers has amazing things to say about us</p>
 
       <div className="slider">
-        <div className="arrow_left"><img src={} alt="" /></div>
-        <img className="quotes" src={} alt="" />
+        <div className="arrow_left"><img src={left} alt="" /></div>
+        <img className="quotes" src={quotes} alt="" />
         <div className="text">
           <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset.....</p>
           <h3>Jonny Thomas</h3>
           <p className="profession">Project Manager</p>
-          <img className='avatar' src={} alt="" />
+          <img className='avatar' src={avatar} alt="avatar" />
         </div>
-        <div className="arrow_right"><img src={r} alt="" /></div>
+        <div className="arrow_right"><img src={right} alt="" /></div>
       </div>
     </Feedback>
-
   </>
   );
 };
