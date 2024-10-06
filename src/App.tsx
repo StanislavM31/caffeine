@@ -17,6 +17,7 @@ import right from './assets/arrowRight.svg';
 
 import styled, { createGlobalStyle } from 'styled-components';
 import img from './assets/coffee_image.png';
+import { useEffect, useState } from 'react';
 
 const coffies = [
   {
@@ -74,7 +75,7 @@ const advantages = [
     icon: best_price,
   },
 ];
-/* const sliderObj = [
+const sliderObj = [
   {
     description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset.....`,
     name: `Jonny Thomas`,
@@ -87,7 +88,7 @@ const advantages = [
   },
   {
     description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis soluta nam quia minima, fugiat totam ratione distinctio voluptatum iure consequatur quisquam dicta alias reiciendis placeat harum architecto neque cum pariatur.`,
-    name: `Anton`,
+    name: `Stanislav`,
     profession: `Dev`,
   },
   {
@@ -100,7 +101,7 @@ const advantages = [
     name: `Thomas`,
     profession: `Project Manager`,
   },
-]; */
+];
 
 const Global = createGlobalStyle`
   * {
@@ -532,6 +533,19 @@ const Feedback = styled.div`
 `;
 
 const App = () => {
+  const [count, setCount] = useState(0);
+
+  const nextSlide = () => (count === sliderObj.length - 1 ? setCount(0) : setCount(count + 1));
+  const lastSlide = () => (count === 0 ? setCount(sliderObj.length - 1) : setCount(count - 1));
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [count]);
+
   return (
     <>
       <Global />
@@ -612,22 +626,17 @@ const App = () => {
 
         <div className="slider">
           <div className="arrow_left">
-            <img src={left} alt="left" />
+            <img src={left} alt="" onClick={() => nextSlide()} />
           </div>
           <img className="quotes" src={quotes} alt="" />
           <div className="text">
-            <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever
-              since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only
-              five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
-              release of Letraset.....
-            </p>
-            <h3>Jonny Thomas</h3>
-            <p className="profession">Project Manager</p>
+            <p>{sliderObj[count].description}</p>
+            <h3>{sliderObj[count].name}</h3>
+            <p className="profession">{sliderObj[count].profession}</p>
             <img className="avatar" src={avatar} alt="" />
           </div>
           <div className="arrow_right">
-            <img src={right} alt="right" />
+            <img src={right} alt="" onClick={() => lastSlide()} />
           </div>
         </div>
       </Feedback>
