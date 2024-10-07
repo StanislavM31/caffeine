@@ -11,7 +11,8 @@ import coffee_cup from './assets/coffeeCup.svg';
 import best_price from './assets/bestPrice.svg';
 import cup from './assets/cup.png';
 import quotes from './assets/quotes.svg';
-import avatar from './assets/photo_2021-05-12_for_coffie.png';
+import minko from './assets/rounded_photo.png';
+import avatar from './assets/avatar.svg';
 import left from './assets/arrowLeft.svg';
 import right from './assets/arrowRight.svg';
 
@@ -88,7 +89,7 @@ const sliderObj = [
   },
   {
     description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis soluta nam quia minima, fugiat totam ratione distinctio voluptatum iure consequatur quisquam dicta alias reiciendis placeat harum architecto neque cum pariatur.`,
-    name: `Stanislav`,
+    name: `Stanislav Minko`,
     profession: `Dev`,
   },
   {
@@ -495,8 +496,13 @@ const Feedback = styled.div`
   .slider {
     border: 1px solid #f9c06a6b;
     background-color: #fff9f1;
+    max-width: 80%;
+    height: 524px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
     position: relative;
-    margin-top: 45px;
     .quotes {
       position: absolute;
       top: 50px;
@@ -506,8 +512,8 @@ const Feedback = styled.div`
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 129px 100px 101px;
-      gap: 30px;
+      padding: 129px 70px 80px;
+      gap: 20px;
 
       h3 {
         font-family: Playfair Display;
@@ -542,7 +548,6 @@ const App = () => {
     const interval = setInterval(() => {
       nextSlide();
     }, 3000);
-
     return () => clearInterval(interval);
   }, [count]);
 
@@ -633,7 +638,7 @@ const App = () => {
             <p>{sliderObj[count].description}</p>
             <h3>{sliderObj[count].name}</h3>
             <p className="profession">{sliderObj[count].profession}</p>
-            <img className="avatar" src={avatar} alt="" />
+            <img className="avatar" src={sliderObj[count].profession === 'Dev' ? minko : avatar} alt="" />
           </div>
           <div className="arrow_right">
             <img src={right} alt="" onClick={() => lastSlide()} />
