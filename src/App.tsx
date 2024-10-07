@@ -1,4 +1,5 @@
 import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 import coffee from './assets/coffeeBeans.png';
 import bg_coffee from './assets/BackgroundCoffe.png';
 import coffeeMenu1 from './assets/Cappuccino.svg';
@@ -659,6 +660,7 @@ const App = () => {
           </div>
         </div>
       </Feedback>
+      <Footer />
     </>
   );
 };

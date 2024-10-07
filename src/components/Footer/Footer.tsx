@@ -9,9 +9,15 @@ import twitter from './assets/twitter.svg';
 const BackgroundFooter = styled.div`
   background-image: url(${bg_coffe_short});
   width: 100%;
-  height: 100%;
+  height: 374px;
   background-size: cover;
   background-position: center;
+  margin-top: 82px;
+
+  @media (max-width: 600px) {
+    width: 0;
+    height: 0;
+  }
 `;
 const BackgroundCoffeBeans = styled.div`
   background-image: url(${bg_coffe_beans});
@@ -25,7 +31,11 @@ const BackgroundCoffeBeans = styled.div`
     justify-content: center;
     align-items: center;
     gap: 66px;
-    padding: 162px 2% 0;
+    padding: 162px 2% 50px;
+
+    @media (max-width: 700px) {
+      flex-wrap: wrap-reverse;
+    }
 
     .info_text {
       display: flex;
@@ -34,24 +44,59 @@ const BackgroundCoffeBeans = styled.div`
       gap: 20px;
 
       h1 {
-        font-family: Clicker Script;
-        font-size: 54px;
-        font-weight: 400;
+        font: 400 54px Clicker Script;
         color: #ffffff;
-        /* margin-top: 162px; */
+
+        @media (max-width: 900px) {
+          font-size: 40px;
+        }
       }
 
       p {
-        font-family: Playfair Display;
-        font-size: 14px;
-        font-weight: 400;
+        font: 400 14px Playfair Display;
         color: #ffffff;
         line-height: 22px;
+
+        @media (max-width: 900px) {
+          font-size: 12px;
+          line-height: 18px;
+        }
       }
 
       .images {
         display: flex;
         gap: 20px;
+
+        .facebook,
+        .instagram,
+        .youtube,
+        .twitter {
+          cursor: pointer;
+          width: 24px;
+          height: 24px;
+          background-size: contain;
+          background-repeat: no-repeat;
+
+          &:hover {
+            transform: scale(1.1);
+          }
+        }
+
+        .facebook {
+          background-image: url(${facebook});
+        }
+
+        .instagram {
+          background-image: url(${instagram});
+        }
+
+        .youtube {
+          background-image: url(${youtube});
+        }
+
+        .twitter {
+          background-image: url(${twitter});
+        }
       }
     }
 
@@ -60,19 +105,28 @@ const BackgroundCoffeBeans = styled.div`
       justify-content: space-between;
       gap: 66px;
 
+      @media (max-width: 400px) {
+        gap: 33px;
+      }
+
       h2 {
-        font-family: Playfair Display;
-        font-size: 26px;
-        font-weight: 700;
+        font: 700 26px Playfair Display;
         color: #ffffff;
         margin: 0 0 55px;
+
+        @media (max-width: 900px) {
+          font-size: 20px;
+          margin: 0 0 15px;
+        }
       }
 
       p {
-        font-family: Playfair Display;
-        font-size: 18px;
-        font-weight: 400;
+        font: 400 18px Playfair Display;
         color: #ffffff;
+
+        @media (max-width: 900px) {
+          font-size: 14px;
+        }
       }
 
       .info_contact,
@@ -87,6 +141,10 @@ const BackgroundCoffeBeans = styled.div`
       .info_contact {
         h2 {
           margin-bottom: 31px;
+
+          @media (max-width: 900px) {
+            margin-bottom: 0;
+          }
         }
       }
     }
@@ -105,10 +163,10 @@ const Footer = () => {
               since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
             </p>
             <div className="images">
-              <img src={facebook} alt="facebook" />
-              <img src={instagram} alt="instagram" />
-              <img src={youtube} alt="youtube" />
-              <img src={twitter} alt="twitter" />
+              <div className="facebook"></div>
+              <div className="instagram"></div>
+              <div className="youtube"></div>
+              <div className="twitter"></div>
             </div>
           </div>
           <div className="info_menu">
