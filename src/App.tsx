@@ -278,6 +278,18 @@ const MenuList = styled.div`
     height: 364px;
     text-align: center;
     background: #fff9f1;
+    &:hover {
+      transform: scale(1.1);
+      transition: transform 0.8s linear;
+      cursor: pointer;
+      .btn_order {
+        background: #b87716;
+        color: #fff;
+        transition:
+          background 0.9s ease,
+          color 0.5s ease;
+      }
+    }
 
     .coffeeMenu1,
     .coffeeMenu2,
@@ -361,9 +373,11 @@ const Advantages = styled.div`
       background: #fff9f1;
       padding: 36px 43px;
       transition: transform 0.3 ease;
-      &hover {
+      &:hover {
         background-color: #ffeed8;
         transform: scale(1.1);
+        transition: transform 0.5s linear;
+        cursor: pointer;
       }
 
       .coffee_beans,
