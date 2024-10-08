@@ -78,24 +78,36 @@ const BackgroundCoffeBeans = styled.div`
           background-repeat: no-repeat;
 
           &:hover {
-            transform: scale(1.1);
+            transform: scale(1.5);
           }
         }
 
         .facebook {
           background-image: url(${facebook});
+          &:hover {
+            filter: invert(25%) sepia(100%) saturate(1000%) hue-rotate(180deg) brightness(95%) contrast(90%);
+          }
         }
 
         .instagram {
           background-image: url(${instagram});
+          &:hover {
+            filter: brightness(0) saturate(100%) invert(92%) sepia(10%) saturate(1807%) hue-rotate(245deg) brightness(103%) contrast(102%);
+          }
         }
 
         .youtube {
           background-image: url(${youtube});
+          &:hover {
+            filter: brightness(0) saturate(100%) invert(18%) sepia(92%) saturate(3563%) hue-rotate(347deg) brightness(90%) contrast(97%);
+          }
         }
 
         .twitter {
           background-image: url(${twitter});
+          &:hover {
+            filter: brightness(0) saturate(100%) invert(82%) sepia(9%) saturate(946%) hue-rotate(174deg) brightness(107%) contrast(100%);
+          }
         }
       }
     }

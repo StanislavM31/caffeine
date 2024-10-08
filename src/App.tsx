@@ -186,6 +186,14 @@ const CoffeeDiscovery = styled.div`
     padding: 2%;
     gap: 50px;
   }
+  @media (max-width: 391px) {
+    flex-direction: column;
+    padding: 1%;
+    gap: 10px;
+    .content {
+      width: 300px;
+    }
+  }
 
   .content {
     display: flex;
@@ -241,6 +249,15 @@ const MenuList = styled.div`
 
   @media (max-width: 900px) {
     padding: 2%;
+  }
+
+  @media (max-width: 391px) {
+    flex-direction: column;
+    padding: 1%;
+    gap: 10px;
+    .content {
+      width: 300px;
+    }
   }
 
   h2 {
@@ -345,6 +362,14 @@ const Advantages = styled.div`
   align-items: center;
   margin: 82px auto;
   gap: 20px;
+  @media (max-width: 391px) {
+    flex-direction: column;
+    padding: 1%;
+    gap: 10px;
+    .content {
+      width: 300px;
+    }
+  }
 
   h2 {
     font-family: 'Playfair Display';
@@ -511,7 +536,6 @@ const Feedback = styled.div`
   .slider {
     border: 1px solid #f9c06a6b;
     background-color: #fff9f1;
-    max-width: 80%;
     height: 524px;
     display: flex;
     flex-direction: column;
@@ -596,9 +620,9 @@ const App = () => {
       </CoffeeDiscovery>
 
       <MenuList>
-        <h2>Enjoy a new blend of coffee style</h2>
-        <p>Explore all flavours of coffee with us. There is always a new cup worth experiencing.</p>
         <div className="content">
+          <h2>Enjoy a new blend of coffee style</h2>
+          <p>Explore all flavours of coffee with us. There is always a new cup worth experiencing.</p>
           {coffies.map(el => (
             <div className="menu_card" key={el.id}>
               <img src={el.img} alt="" />
@@ -611,20 +635,22 @@ const App = () => {
         </div>
       </MenuList>
       <Advantages>
-        <h2>Why are we different?</h2>
-        <p>We don’t just make your coffee, we make your day!</p>
-        <div className="advantages_content">
-          {advantages.map(el => (
-            <div className="advantages_card" key={el.id}>
-              <img src={el.icon} alt="" />
-              <h3>{el.title}</h3>
-              <p>{el.description}</p>
-            </div>
-          ))}
+        <div className="content">
+          <h2>Why are we different?</h2>
+          <p>We don’t just make your coffee, we make your day!</p>
+          <div className="advantages_content">
+            {advantages.map(el => (
+              <div className="advantages_card" key={el.id}>
+                <img src={el.icon} alt="" />
+                <h3>{el.title}</h3>
+                <p>{el.description}</p>
+              </div>
+            ))}
+          </div>
+          <p>Great ideas start with great coffee, Lets help you achieve that</p>
+          <p className="important">Get started today.</p>
+          <button className="button">Join Us</button>
         </div>
-        <p>Great ideas start with great coffee, Lets help you achieve that</p>
-        <p className="important">Get started today.</p>
-        <button className="button">Join Us</button>
       </Advantages>
       <VisitCard>
         <div className="wrapper_visit_card">
@@ -641,6 +667,7 @@ const App = () => {
       </VisitCard>
 
       <Feedback>
+        <div className="content"></div>
         <h2>Our coffee perfection feedback</h2>
         <p>Our customers has amazing things to say about us</p>
 
