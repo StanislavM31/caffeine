@@ -40,6 +40,7 @@ const BackgroundCoffeBeans = styled.div`
     .info_text {
       display: flex;
       flex-direction: column;
+      align-items: flex-start;
       max-width: 380px;
       gap: 20px;
 
@@ -65,6 +66,7 @@ const BackgroundCoffeBeans = styled.div`
 
       .images {
         display: flex;
+        /* justify-content: start; */
         gap: 20px;
 
         .facebook,
