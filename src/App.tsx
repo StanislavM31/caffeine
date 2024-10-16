@@ -15,7 +15,7 @@ import quotes from './assets/quotes.svg';
 import avatar from './assets/avatar.svg';
 import left from './assets/arrowLeft.svg';
 import right from './assets/arrowRight.svg';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Global, BackgroundPreview, CoffeeDiscovery, MenuList, Advantages, VisitCard, Feedback } from './style';
 
 const coffies = [
@@ -104,8 +104,10 @@ const sliderObj = [
 
 const App = () => {
   const [count, setCount] = useState(0);
-
-  const nextSlide = () => (count === sliderObj.length - 1 ? setCount(0) : setCount(count + 1));
+  const nextSlide = useCallback(() => {
+    setCount(prevCount => (prevCount === sliderObj.length - 1 ? 0 : prevCount + 1));
+  }, []);
+  /* const nextSlide = () => (count === sliderObj.length - 1 ? setCount(0) : setCount(count + 1)); */
   const lastSlide = () => (count === 0 ? setCount(sliderObj.length - 1) : setCount(count - 1));
 
   useEffect(() => {
@@ -113,7 +115,7 @@ const App = () => {
       nextSlide();
     }, 3000);
     return () => clearInterval(interval);
-  }, [count]);
+  }, [nextSlide]);
 
   return (
     <>
