@@ -1,5 +1,4 @@
-
- 🤩 DEPLOYED PROJECT on https://caffeine-rose.vercel.app/  🤩
+🤩 DEPLOYED PROJECT on https://caffeine-rose.vercel.app/ 🤩
 
 # React + TypeScript + Vite
 

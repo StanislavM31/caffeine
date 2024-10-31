@@ -17,6 +17,7 @@ import left from './assets/arrowLeft.svg';
 import right from './assets/arrowRight.svg';
 import { useCallback, useEffect, useState } from 'react';
 import { Global, BackgroundPreview, CoffeeDiscovery, MenuList, Advantages, VisitCard, Feedback } from './style';
+import { motion } from 'framer-motion';
 
 const coffies = [
   {
@@ -122,7 +123,7 @@ const App = () => {
       <Global />
       <BackgroundPreview>
         <Header />
-        <div className="landing">
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} className="landing">
           <p>We’ve got your morning covered with</p>
           <h1>Coffee</h1>
           <p>
@@ -130,7 +131,7 @@ const App = () => {
             customers.
           </p>
           <button className="button">Order Now</button>
-        </div>
+        </motion.div>
       </BackgroundPreview>
 
       <CoffeeDiscovery>
