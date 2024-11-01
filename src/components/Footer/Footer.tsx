@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import bg_coffe_short from './assets/backgroundCoffeShort.png';
 import bg_coffe_beans from './assets/coffeBeansBackground.png';
-import facebook from './assets/facebook.svg';
-import instagram from './assets/instagram.svg';
-import youtube from './assets/youtube.svg';
-import twitter from './assets/twitter.svg';
+import facebook from '../Footer/assets/facebook.svg';
+import instagram from '../Footer/assets/instagram.svg';
+import youtube from '../Footer/assets/youtube.svg';
+import twitter from '../Footer/assets/twitter.svg';
 
 const BackgroundFooter = styled.div`
   background-image: url(${bg_coffe_short});
