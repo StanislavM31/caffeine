@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import { motion } from 'framer-motion';
 const Wrapper = styled.div`
   max-width: 1220px;
   display: flex;
@@ -48,7 +48,8 @@ const Wrapper = styled.div`
     display: flex;
     gap: 60px;
 
-    p {
+    a {
+      text-decoration: none;
       color: #ffffff;
       transition:
         text-decoration 0.3s,
@@ -76,24 +77,26 @@ const Wrapper = styled.div`
   }
 `;
 const Header = () => {
-  const nav: string[] = ['Home', 'Menu', 'About Us', 'Contact Us'];
+  const nav = ['Home', 'Menu', 'About Us', 'Contact Us'];
 
   return (
-    <>
-      <Wrapper>
-        <h1>Caffeine</h1>
-        <div className="navigation">
-          {nav.map((el, i) => (
-            <p key={i}>{el}</p>
-          ))}
-        </div>
+    <Wrapper>
+      <h1>Caffeine</h1>
+      <div className="navigation">
+        {nav.map((el, i) => (
+          <a key={i} href={`#${el.replace(/\s+/g, '').toLowerCase()}`}>
+            {el}
+          </a>
+        ))}
+      </div>
 
-        <div className="container">
-          <button>Sign In</button>
-          <button className="btn_active">Sign Up</button>
-        </div>
-      </Wrapper>
-    </>
+      <div className="container">
+        <button>Sign In</button>
+        <motion.button whileTap={{ scale: 1.4 }} className="btn_active">
+          Sign Up
+        </motion.button>
+      </div>
+    </Wrapper>
   );
 };
 export default Header;

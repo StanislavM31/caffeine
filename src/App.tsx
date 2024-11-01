@@ -17,6 +17,7 @@ import left from './assets/arrowLeft.svg';
 import right from './assets/arrowRight.svg';
 import { useCallback, useEffect, useState } from 'react';
 import { Global, BackgroundPreview, CoffeeDiscovery, MenuList, Advantages, VisitCard, Feedback } from './style';
+import { motion } from 'framer-motion';
 
 const coffies = [
   {
@@ -122,15 +123,25 @@ const App = () => {
       <Global />
       <BackgroundPreview>
         <Header />
-        <div className="landing">
+        <motion.div
+          initial={{ opacity: 0, x: -100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 3 }}
+          viewport={{ once: true }}
+          className="landing"
+        >
           <p>We’ve got your morning covered with</p>
-          <h1>Coffee</h1>
+          <motion.h1 initial={{ scale: 0.7 }} animate={{ scale: 1 }} transition={{ duration: 3 }}>
+            Coffee
+          </motion.h1>
           <p>
             It is best to start your day with a cup of coffee. Discover the best flavours coffee you will ever have. We provide the best for our
             customers.
           </p>
-          <button className="button">Order Now</button>
-        </div>
+          <motion.button whileTap={{ scale: 1.3 }} className="button">
+            Order Now
+          </motion.button>
+        </motion.div>
       </BackgroundPreview>
 
       <CoffeeDiscovery>
@@ -147,19 +158,21 @@ const App = () => {
       </CoffeeDiscovery>
 
       <MenuList>
-        <h2>Enjoy a new blend of coffee style</h2>
-        <p>Explore all flavours of coffee with us. There is always a new cup worth experiencing.</p>
-        <div className="content">
-          {coffies.map(el => (
-            <div className="menu_card" key={el.id}>
-              <img src={el.img} alt="" />
-              <h3>{el.title}</h3>
-              <p className="description">{el.description}</p>
-              <p className="price">{el.price}</p>
-              <button className="btn_order">Order Now</button>
-            </div>
-          ))}
-        </div>
+        <section id="menu">
+          <h2>Enjoy a new blend of coffee style</h2>
+          <p>Explore all flavours of coffee with us. There is always a new cup worth experiencing.</p>
+          <div className="content">
+            {coffies.map(el => (
+              <div className="menu_card" key={el.id}>
+                <img src={el.img} alt="" />
+                <h3>{el.title}</h3>
+                <p className="description">{el.description}</p>
+                <p className="price">{el.price}</p>
+                <button className="btn_order">Order Now</button>
+              </div>
+            ))}
+          </div>
+        </section>
       </MenuList>
       <Advantages>
         <h2>Why are we different?</h2>
@@ -185,8 +198,7 @@ const App = () => {
             <button className="button">Order Now</button>
           </div>
           <div className="wrapper_img">
-            {/* <img src={beans} alt="" /> */}
-            <img src={cup} alt="" />
+            <motion.img src={cup} alt="cup" initial={{ x: 100 }} whileInView={{ x: 0 }} transition={{ duration: 1 }} />
           </div>
         </div>
       </VisitCard>
